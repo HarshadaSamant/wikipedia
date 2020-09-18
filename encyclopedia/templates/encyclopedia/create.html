@@ -1,0 +1,28 @@
+{% extends "encyclopedia/layout.html" %}
+ 
+{% block title %}
+    Encyclopedia
+{% endblock %}
+ 
+{% block body %}
+ 
+    <h3 style="margin: 20px 0;">Create New Wiki Entry</h3>
+             
+    <form name="frmInfo3" action="/create" method="post" class="form">
+        {% csrf_token %}
+        <label for="entryTitle">Enter Entry Title:</label>
+        <input id="entryTitle" type="text" name="title" placeholder="Enter Title" required>
+        <!-- <input type="textarea" size=100 name="content" placeholder="Enter content with title first in Markdown language" required> -->
+        <label for="entryName">Enter Main Entry:</label>
+        <textarea id="entryName" name="content" rows="4" cols="50" placeholder="Enter content with title first in Markdown language" required></textarea>
+        <button type="submit" id="create" value="Create New Entry" class="submit-btn">Create New Entry</button>
+    </form>   
+     {% for message in messages %}
+ 
+    <div class="alert alert-success">
+        <a class="close" href="#" data-dismiss="alert">×</a>
+        {{ message }}
+    </div>
+    {% endfor %}
+
+{% endblock %}
